@@ -8,7 +8,7 @@ class EvenFibsTest < Minitest::Test
     assert_equal [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89], EvenFibs.fibonacci_numbers(89)
   end
 
-  def test_it_returns_only_even_fibonacci_numbers
+  def test_it_returns_the_sum_of_the_even_fibonacci_numbers
     assert_equal 44, EvenFibs.only_evens(89)
   end
 
