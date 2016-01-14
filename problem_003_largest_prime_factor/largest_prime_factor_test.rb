@@ -3,32 +3,35 @@ require 'minitest/pride'
 require './largest_prime_factor'
 require 'pry'
 
-class PrimeFinderTest < Minitest::Test
+class LargestPrimeFactorFinderTest < Minitest::Test
 
   def test_it_returns_the_factors_of_a_number
-    assert_equal [1,2], PrimeFinder.factors(2)
-    assert_equal [1,3], PrimeFinder.factors(3)
-    assert_equal [1,2,3,6], PrimeFinder.factors(6)
-    assert_equal [1,17], PrimeFinder.factors(17)
+    assert_equal [1,2], LargestPrimeFactorFinder.factors(2)
+    assert_equal [1,3], LargestPrimeFactorFinder.factors(3)
+    assert_equal [1,2,3,6], LargestPrimeFactorFinder.factors(6)
+    assert_equal [1,17], LargestPrimeFactorFinder.factors(17)
+  end
+
+  def test_it_finds_prime_numbers
+    assert_equal true, LargestPrimeFactorFinder.prime?(7)
+    assert_equal true, LargestPrimeFactorFinder.prime?(3)
+    assert_equal false, LargestPrimeFactorFinder.prime?(4)
+    assert_equal true, LargestPrimeFactorFinder.prime?(5)
+    assert_equal false, LargestPrimeFactorFinder.prime?(6)
+    assert_equal true, LargestPrimeFactorFinder.prime?(7)
+    assert_equal false, LargestPrimeFactorFinder.prime?(8)
+    assert_equal true, LargestPrimeFactorFinder.prime?(89)
+  end
+
+  def test_it_finds_the_largest_prime_in_an_ordered_list
+    assert_equal 3, LargestPrimeFactorFinder.largest_prime_in_set([1,2,3,6])
+  end
+
+  def test_it_returns_the_largest_prime_factor_of_a_number
+    assert_equal 29, LargestPrimeFactorFinder.largest_prime_factor(13195)
+    assert_equal 123, LargestPrimeFactorFinder.largest_prime_factor(600_851_475_143)
   end
 end
-
-
-# take a number
-# divide it by every number between two and itself
-# give the quotient, divide *that* by every number between 2 and *half-of-itself* ... etc.
-# until you get to some number that cannot be divided without a remainder.
-
-
-
-
-
-
-
-
-
-
-
 
 
 # take a range of numbers,
