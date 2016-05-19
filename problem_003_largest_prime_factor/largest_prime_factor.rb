@@ -1,33 +1,47 @@
 class LargestPrimeFactorFinder
 
   def self.largest_prime_factor(number)
-    largest_prime_in_set(factors(number))
-  end
 
-  # Maybe look into a profiler
-  # that demonstrates where Ruby is spending it's time:
-  # self.factors or self.prime?
-  # RubyProf: https://github.com/ruby-prof/ruby-prof
+    # ############################
+    # TERMS / VOCABULARY
 
-  # http://stackoverflow.com/questions/3398159/all-factors-of-a-given-number
+    # http://www.aaamath.com/div-terms.htm
 
-  # Is it possible and quicker to get all the primes of a number,
-  # then, of those primes, determine which is the highest factor?
+    # Dividend = number being divided
+    # Divisor  = number that the dividend is divided by
+    # Quotient = number of times the divisor will go into the dividend
 
-  def self.factors(number)
-    some_factors = []
-    1.upto(number) do |n|
-      if number % n == 0
-        some_factors << n
+
+    # ############################
+    # FLOW
+
+    # Given a dividend
+    # the lowest divisor will produce the highest quotient AKA the highest factor
+    # the next highest divisor will produce the next highest factor etc.
+    # In this way we can decrement through the factors from highest to lowest and check if they're prime.
+
+    # ############################
+    # PSEUDO CODE
+
+    # divide by two
+      # check if quotient is prime
+        # if not
+          # divide by 3 and repeat.
+
+    divisor = 2 # start with 2
+    if factor?(number, divisor) # refactor this with divmod
+      # check if it's prime
+      factor = number / divisor
+      if prime?(factor)
+        # Success!
+        highest_prime_factor = factor
+        return highest_prime_factor
       end
     end
-    some_factors
   end
 
-  def self.largest_prime_in_set(set)
-    set.reverse.each do |n|
-      return n if prime?(n)
-    end
+  def self.factor?(dividend, divisor)
+    dividend % divisor == 0
   end
 
   def self.prime?(number)
