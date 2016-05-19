@@ -38,3 +38,18 @@ This home-rolled solution operates at the same speed as Ruby's Prime library...
     true
   end
 ```
+
+# What's slowest?
+
+Presently, the program bottlenecks while iterating from 1 up_to the given number:
+```
+  def self.factors(number)
+    some_factors = []
+    1.upto(number) do |n|
+      if number % n == 0
+        some_factors << n
+      end
+    end
+    some_factors
+  end
+```

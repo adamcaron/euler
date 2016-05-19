@@ -31,8 +31,9 @@ class LargestPrimeFactorFinderTest < Minitest::Test
   end
 
   def test_it_returns_the_largest_prime_factor_of_a_number
+    assert_equal 7, LargestPrimeFactorFinder.largest_prime_factor(14)
     # assert_equal 29, LargestPrimeFactorFinder.largest_prime_factor(13195)
-    assert_equal 29, LargestPrimeFactorFinder.largest_prime_factor(131950000)
+    # assert_equal 29, LargestPrimeFactorFinder.largest_prime_factor(131950000)
     # assert_equal 123, LargestPrimeFactorFinder.largest_prime_factor(600_851_475_143)
   end
 end
